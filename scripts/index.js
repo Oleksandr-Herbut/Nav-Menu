@@ -9,7 +9,7 @@ function toggleMenu(isOpen) {
   document.querySelector("#closeButton").style.display = isOpen
     ? "inline-block"
     : "none";
-  // Добавляем или удаляем класс 'open' у элемента 'sideMenu' в зависимости от состояния меню
+  // Добавляем или удаляем класс'open' у элемента 'sideMenu' в зависимости от состояния меню
   menu.classList.toggle("open", isOpen);
 }
 
@@ -22,3 +22,15 @@ document
 document
   .querySelector("#closeButton")
   .addEventListener("click", () => toggleMenu(false));
+
+// Добавляем обработчики событий 'click' для каждого пункта меню с классом 'menu-item'
+document.querySelectorAll(".menu-item").forEach((item) => {
+  item.addEventListener("click", function () {
+    // Переключаем видимость подпунктов меню
+    const submenu = this.querySelector(".submenu");
+    if (submenu) {
+      submenu.style.display =
+        submenu.style.display === "block" ? "none" : "block";
+    }
+  });
+});
